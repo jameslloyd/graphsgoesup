@@ -1,4 +1,4 @@
-# graphgoesup
+# Graph Goes Up
 
 ```
 docker run --name graphgoesup -it jameslloyd/graphgoesup     
