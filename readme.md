@@ -18,10 +18,9 @@ services:
     image: jameslloyd/graphgoesup
     container_name: graphgoesup
     environment:
-     # - DISCORDWEBHOOK=https://discord.com/api/webhooks/931137345456066620/xJbBeXzqxAzpgNs6YEABoPxSZrGz52S6EjqfN7s3s9xcW3amdOQJuyXxwDcYTJEarxVj 
-     - DISCORDWEBHOOK=https://discord.com/api/webhooks/271935678223220737/XvA13Bd4rtyr7pP97DescJOnLA1h_O4vKo26EtQyIdyo5LAzwodhHfO7T6HqqG-E4f1v
-     - IEXAPIKEY=pk_3bf84a5d119e4c66bca92300da352256
-     - PRICEWAITTIME=86400 
+     - DISCORDWEBHOOK=<SOME DISCORD WEB HOOK>
+     - IEXAPIKEY=<YOUR API KEY>
+     - PRICEWAITTIME=86400 #one day
      - EMOJIUP=":thumbsup:"
      - EMOJIDOWN=":thumbsdown:"
      - EMOJIFLAT=":pause_button:"
