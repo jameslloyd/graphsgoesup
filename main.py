@@ -50,19 +50,19 @@ def main():
         if newprice == oldprice:
             title = 'Graph is flat'
             colour = 'FFBF00'
-            icon = Config.EMOJIFLAT.strip('"')
+            icon = Config.EMOJIFLAT
             move = ''
         elif newprice > oldprice:
             #graph goes up
             title = 'Graph goes up'
             colour = '00FF00'
-            icon = Config.EMOJIUP.strip('"')
+            icon = Config.EMOJIUP
             move = 'increase'
         else:
             #graph goes down
             title = 'Graph goes down'
             colour = 'FF0000'
-            icon = Config.EMOJIDOWN.strip('"')
+            icon = Config.EMOJIDOWN
             move = 'decrease'
         
         webhook = DiscordWebhook(url=Config.DISCORDWEBHOOK)
@@ -70,7 +70,7 @@ def main():
         embed.set_author(name='GraphGoesUp', url='https://github.com/jameslloyd/graphsgoesup', icon_url='https://www.freeiconspng.com/uploads/growth-icon-28.png')
         embed.set_timestamp()
         embed.add_embed_field(name='Change', value=f'{increase}%', inline=False)
-        embed.add_embed_field(name='Value', value=f'{newprice}', inline=False)
+        embed.add_embed_field(name='Value', value=f'£{newprice}', inline=False)
         embed.set_footer(text=f'next update {human_time_duration(Config.PRICEWAITTIME)}')
         webhook.add_embed(embed)
         response = webhook.execute()
