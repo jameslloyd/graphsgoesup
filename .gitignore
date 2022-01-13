@@ -1,3 +1,7 @@
 .venv
 __pycache__
 test.py
+.envrc
+influxtest.py
+.gitignore
+main2.py
