@@ -5,7 +5,7 @@ class Config(object):
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     LOG_FORMAT = os.getenv("LOG_FORMAT") or '%(asctime)s - %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(levelname)s - %(message)s' # https://docs.python.org/3/howto/logging.html#changing-the-format-of-displayed-messages
     LOG_LEVEL = os.getenv("LOG_LEVEL") or 'INFO'
-    PRICEWAITTIME = os.getenv('PRICEWAITTIME')
+    PRICEWAITTIME = int(os.getenv('PRICEWAITTIME'))
     IEXAPIKEY = os.getenv('IEXAPIKEY')
     DISCORDWEBHOOK = os.getenv('DISCORDWEBHOOK')
     EMOJIUP = os.getenv('EMOJIUP') or ":thumbsup:"
