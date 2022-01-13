@@ -41,30 +41,34 @@ def main():
             oldprice
         except:
             oldprice = get_crypto_price(symbol)
-            logging.info(f'Discord Webhook = {Config.DISCORDWEBHOOK}')
-            logging.info('Current Price {} sleeping for {} seconds'.format(oldprice,Config.PRICEWAITTIME))
+            logging.debug(f'Discord Webhook = {Config.DISCORDWEBHOOK}')
+            logging.debug(f'Loop sleep time = {Config.PRICEWAITTIME} seconds or {human_time_duration(Config.PRICEWAITTIME)} ')
+            logging.info(f'Current Price {oldprice} sleeping for {Config.PRICEWAITTIME} seconds')
         time.sleep(Config.PRICEWAITTIME)
         newprice = get_crypto_price(symbol)
+        logging.debug(f'newprice: {newprice}')
         increase = round((newprice - oldprice) / oldprice * 100,2)
-        logging.info('New Price {} {}% change'.format(newprice,increase,2))
+        logging.debug(f'increase {increase}')
+        logging.info(f'New Price {newprice} {increase}% change')
         if newprice == oldprice:
             title = 'Graph is flat'
             colour = 'FFBF00'
-            icon = Config.EMOJIFLAT
+            icon = Config.EMOJIFLAT.strip('"')
             move = ''
         elif newprice > oldprice:
             #graph goes up
             title = 'Graph goes up'
             colour = '00FF00'
-            icon = Config.EMOJIUP
+            icon = Config.EMOJIUP.strip('"')
+            logging.DEBUG(icon)
             move = 'increase'
         else:
             #graph goes down
             title = 'Graph goes down'
             colour = 'FF0000'
-            icon = Config.EMOJIDOWN
+            icon = Config.EMOJIDOWN.strip('"')
             move = 'decrease'
-        
+        logging.debug(icon)
         webhook = DiscordWebhook(url=Config.DISCORDWEBHOOK)
         embed = DiscordEmbed(title=title,description=f'{icon} {increase}% {move} in the past {human_time_duration(Config.PRICEWAITTIME)}', color=colour)
         embed.set_author(name='GraphGoesUp', url='https://github.com/jameslloyd/graphsgoesup', icon_url='https://www.freeiconspng.com/uploads/growth-icon-28.png')
